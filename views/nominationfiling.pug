@@ -1,0 +1,31 @@
+extends base
+ 
+block content
+ .form#professional-detail
+  form.php-email-form(role='form')
+   .form-row
+   .form-group.col-md-6
+    input#create-name.form-control(type='text' name='name' placeholder='Person Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' )
+   .validate
+    .form-group.col-md-6
+     input#create-email.form-control(type='email' name='email' placeholder='Person Email' data-rule='email' data-msg='Please enter a valid email'  )
+   select(id="type")
+    option(value="proposer") proposer
+    option(value="seconder") seconder
+   br
+   br 
+   .validate
+    .form-group
+     input#create-number.form-control(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   .validate
+    .form-group
+      input#create-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   .validate
+    .form-group
+      input#create-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   .validate
+  //-   p Photo : 
+  //-   .form-group
+  //-    input#create-photo.form-control(type='file' name='subject' placeholder='Post' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject')
+  //-  button.btn.btn-primary.id__(type='submit' id=`${person._id}`) Add person
+   

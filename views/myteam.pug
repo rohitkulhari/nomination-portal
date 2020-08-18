@@ -1,0 +1,62 @@
+extends base
+mixin member(photo,name,email,id)
+ .container.searchContainer
+  .search
+    #page-input
+      .card.text-center.mx-auto(style='width: 15rem;')
+        a(href=`/EC/person/${id}`)
+         img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
+        .card-body
+          h6.card-title= name
+          p.card-text= email 
+          -if(user.role=="admin") 
+           input.btn.btn-warning.deleteme(id=`${id}` value="Delete")
+  
+block content
+ .container.searchContainer
+   .search
+    #page-input
+      .card.text-center.mx-auto(style='width: 25rem;')
+        a(href=`/EC/person/${temp._id}`)
+         img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${temp.photo}` style='width: 5rem' alt='Card image cap')
+        .card-body
+          h2.card-title= temp.name
+          p.card-text= temp.email
+          -if(user.role=="admin") 
+           input.btn.btn-warning.deleteme(id=`${temp._id}` value="Delete")
+ h1
+  u(style="color:white;") Proposers
+ table
+  -for(let i=0;i<team.proposers.length;i++)
+   -if(i%4==0)
+    </tr>
+    <tr>
+     <td>
+      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id)
+   -else
+     td
+      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id)
+ h1
+  u(style="color:white;") Seconders
+ table
+  -for(let i=0;i<team.seconders.length;i++)
+   -if(i%4==0)
+    </tr>
+    <tr>
+     <td>
+      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id)
+   -else
+     td
+      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id)
+ h1
+  u(style="color:white;") Campaigners
+ table
+  -for(let i=0;i<team.campaigners.length;i++)
+   -if((i+1)%4==0||i==0)
+    </tr>
+    <tr>
+     <td>
+      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id)
+   -else
+     td
+      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id)

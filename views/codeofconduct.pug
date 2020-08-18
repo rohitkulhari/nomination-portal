@@ -1,0 +1,22 @@
+extends base
+mixin element(day,time)
+ .coc
+  img(src="/image/14.png" class="backdesc")
+  p(class="days")="Day"+day
+  p(class="time")=time
+  <br><br><br><br><br><br><br><br><br>
+  img(src="/image/11.png" class="backcoc")
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  
+block content
+ include header
+ .coc
+  img(src="/image/13.png" class="backcoc")
+  p.textcoc Code of Conduct
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ +element(1,5)
+ +element(1,5)
+ +element(1,5)
+
+
+  

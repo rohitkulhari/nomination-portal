@@ -1,0 +1,39 @@
+extends base
+ 
+block content
+ .form#personal-detail
+  form.php-email-form(role='form')
+   .form-row
+   .form-group.col-md-6
+    input.form-control(type='text' name='name' placeholder='Your Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' disabled=true value=`${person.name}`)
+   .validate
+    .form-group.col-md-6
+     input.form-control(type='email' name='email' placeholder='Your Email' data-rule='email' data-msg='Please enter a valid email' disabled=true value=`${person.email}`)
+   .validate
+    .form-group.col-md-6
+     input.form-control(type='email' name='role' placeholder='Your Role'  data-msg='Please enter a valid email' disabled=true value=`${person.role}`)
+   .validate
+    .form-group
+     input#save-number.form-control(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.phoneNo}`)
+   .validate
+    .form-group
+     -if(person.address!=undefined)
+      input#save-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.address}`)
+     -else
+      input#save-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   .validate
+    .form-group
+     -if(person.Rollno!=undefined)
+      input#save-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.Rollno}`)
+     -else
+      input#save-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   -if(person.role=="candidate")
+    .validate
+     .form-group
+      input.form-control(type='text' name='subject' placeholder='Post' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${(person.post).replace(/_/g," ")}` disabled=true)
+   .validate
+    p Photo : 
+    .form-group
+     input#save-photo.form-control(type='file' name='photo' placeholder='Photo' accept="image/+")
+   button.btn.btn-primary.id__(type='submit' id=`${person._id}`) Save
+   

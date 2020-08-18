@@ -1,0 +1,28 @@
+extends base
+mixin member(photo,name,email,id)
+ .container.searchContainer
+  .search
+    #page-input
+      .card.text-center.mx-auto(style='width: 15rem;')
+        a(href=`/EC/Myteam/${id}`)
+         img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
+        .card-body
+          h6.card-title= name
+          p.card-text= email 
+          input.btn.btn-warning.deleteme(id=`${id}` value="Delete")
+  
+block content
+ if candidates_
+  h1
+   -if(candidates_[0])
+    u(style="color:white;")= candidates_[0].post
+  table
+   -for(let i=0;i<candidates_.length;i++)
+    -if(i%4==0)
+     </tr>
+     <tr>
+      <td>
+       +member(candidates_[0].photo,candidates_[0].name,candidates_[0].email,candidates_[0]._id)
+    -else
+      td
+       +member(candidates_[0].photo,team.candidates_[0].name,candidates_[0].email,candidates_[0]._id)

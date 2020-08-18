@@ -1,0 +1,19 @@
+header
+    nav(class="sign")
+      if user
+        img(src="/image/12.png" class="logo")
+        a(href="#" class="head" id="logout" ) Logout
+        a(href="/EC/mainpage" class="head") Home
+        -if(user.role!="admin")
+         a(href=`/EC/person/${user._id}` class="head") ME
+        -if(user.role=="candidate")
+         a(href=`/EC/Myteam/${user._id}` class="head") My Team
+         a(href=`/EC/nomination/${user._id}` class="head") Nomination
+        -if(user.role=="admin")
+         a(href=`/EC/posts` class="head") Posts
+      else
+        img(src="/image/12.png" class="logo")
+        a(href="/EC/login" class="head" ) LogIn/SignUp
+        a(href="/EC/mainpage" class="head") Home
+      
+
